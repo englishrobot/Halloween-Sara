@@ -1,0 +1,187 @@
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    sprites.destroy(murcielagi, effects.fire, 200)
+    music.play(music.createSoundEffect(WaveShape.Noise, 5000, 2441, 255, 0, 100, SoundExpressionEffect.None, InterpolationCurve.Linear), music.PlaybackMode.InBackground)
+    info.changeScoreBy(1)
+    murcielagi = sprites.create(img`
+        . . f f f . . . . . . . . f f f 
+        . f f c c . . . . . . f c b b c 
+        f f c c . . . . . . f c b b c . 
+        f c f c . . . . . . f b c c c . 
+        f f f c c . c c . f c b b c c . 
+        f f c 3 c c 3 c c f b c b b c . 
+        f f b 3 b c 3 b c f b c c b c . 
+        . c b b b b b b c b b c c c . . 
+        . c 1 b b b 1 b b c c c c . . . 
+        c b b b b b b b b b c c . . . . 
+        c b c b b b c b b b b f . . . . 
+        f b 1 f f f 1 b b b b f c . . . 
+        f b b b b b b b b b b f c c . . 
+        . f b b b b b b b b c f . . . . 
+        . . f b b b b b b c f . . . . . 
+        . . . f f f f f f f . . . . . . 
+        `, SpriteKind.Enemy)
+    murcielagi.setPosition(randint(10, 150), randint(10, 110))
+    info.startCountdown(5)
+})
+let murcielagi: Sprite = null
+scene.setBackgroundImage(img`
+    9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999966666699969999999999999999999999999999999999999999999999999999
+    9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
+    9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
+    9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996999999999999969999999999999999999999999966999
+    9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996999999999999999999999996666669
+    9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996999969999999999999999999999996669
+    9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996999
+    9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996999
+    9999999999999999999999999999999999999999dd9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
+    9999999999999999999999999999999999999999d7b999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999699999
+    999999999999999999999999999999999999999dd7b999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999669999
+    999999999999999999999999999999999999999db7bb99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999969999999999996999699996
+    999999999999999999999999666999999999999d777799999999999699999999999999999999999999999999969999999999999999999999999999999999999999999999999999999999999999996999
+    99999999999999999999999996699999999999db7777b9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999699999
+    99999999999999999999999996699699999999dbb77bb9999999699999999999999999999999999999999999999999999999999999999999999999969999999999999999969999999999999969999966
+    9999999999999999966999996699999999999dd7b777bb999996999999999999999996999999999999999999999999999999999999999999999999999999699999999999999999999999699999999969
+    9999999999999999969999999999999999999db77777bb999999999999999999999999999699969999999999999999999999999999999999999999999999999999999999999999999669699969999966
+    699969999999999999999999999999666699cd77b7b7777699999ddddd9969999dbbb9999999699999999999969999999999999999999999999999999999999999999999999696999999969999999996
+    999999999999999999999999999999666696d7bbb7bbb77b99999dbbdb99dd999ddbb9999999999999999999999996999999999999999999999999999969669999999999999999699999969999999999
+    696999999999999999969999999699999996d7777777777b99969d777b9dd779ddccb6696999999699999999969999999996999999999999999999999666669999999999999999966669696999699999
+    69999699999999999999999999999999669d7777bbbb7777b6966db7bb9d7779dbcbb6699999999999999999999999999999999999999999966669966699669999999699999696969996669666669996
+    6999999999999999999969969999999966bdbbbbbbbbbbbbbb966db77b9dbbb6dbb776699999999966999999999999999999996999999669966699669996969999999999996666999996699966666666
+    9999999999999999999999999999999999dbb777777777bbbb666d777bbd77bb777776669669669966999966669999999699996999999999966996969996969996999996666666669666666666666666
+    9999999999999999999699999999999999b7777777777777bb6666b7bb777bb77b7bb6666669999666666996969996669999699999999999999999996999699969966699999999666666666666666666
+    999999996699999699999669999999999999777777777777666666b77b777777777bb66966666996666669669969966969996999999999999999999999996999669ff6999996996666666666666666ff
+    99999999996999966996669999999999999977bbbbbb7777666666777bbbbbb77777766966999996996669999999999999966996969999999966669999996696999f969966666666666666666666ffff
+    999999999999669996966996699999999999bbcbbccbbbbb6666666bbb7bbb77bbbb66666666996669966666999669999966699666999999966966999699669966ff96666669666666666666666fffff
+    999996699696669996999999969999999999bbcbbbbbbbbb66666666b77777777bb666666666666966966966666669666966696699666999669669666996666666f6666666666666666666666fffffff
+    666996666666699966999999999699999999bbbb777bbbbb66666666d7777777776666666666666666666666666666666666666666666666669666666666666666f666666666666666666666ffffffff
+    666666666666999666696699999966999999b7777777777b66666666d77bbbbb776666666666666666666666666666666666696666666666666666666666666666f66666666666666666666fffffffff
+    66666666666666666666696999699999999997777777777966666666d7bbb77bb76666666666666666666666666666666666666666666666666666666666666666f666666ff66666666666ffffffffff
+    66666666666666666666b9699999969999b696b7777777b6f666666677bbbb7777666666666666ff6666666666666666666666666666666666666666666666ff66ff66666ff666666666ffffffffffff
+    666666666666666666dddbbb9dddd699ddb9bb977bbbbbfbbddddb666bbccbbbb7bb66666666666f66666666666666666666666666666666666666666666666ff66f666666f66666666fffffffffffff
+    666666666666666666dbbbbfdbbdbbbbbbbb64b77bbbb77dddbbbbbbbcbbbbbbb7766bbbbbb6666f69666666666666666666666666666666666666666666666fff6ff66666f6f6666fffffffffffffff
+    b6666666b6b6b66666dbbbbfbbbbbbb6bbbb64bbbbbbb77bbcbbcbbcccbbbccbb77bb6b44466666f66666666666666666666666666666f6666666666666666666f66ff6666fff66fffffffffffffffff
+    b6666666b6b6bb66b6dccccbfcccccbb777b444bbcbccb7bbbbbcbbbccbbbccbb74bb66bbb444b6666666666666666666666666666666ff6666666666666666666f66f6666ff66ffffffffffffffffff
+    bb6b66bb64bb64bb66dbbbbbbbbbbbbbb7bb444bccbbb77bb777bbbbccbbbbbbb744464444bb4b6f66bf6666666666666666666666666ff6666666666666666666ffff6666f66fffffffffffffffffff
+    444466bb44464446b6b77bbbb7b777bb77b7444bbbbbb777777777bbbcbbbb7777444444bb44bbbfbb6f6666666666666666666666666f666f66666666666666666fff666bffffffffffffffffffffff
+    44b6b4b4b4b6b4444b4b777777777777777744b7bbbbb77774b4777bbbbcbb77774444446644444fbb6f6bbb666666666666666666666f66ff66666666666666666fff6bbfffffffffffffffffffffff
+    444444b44444444444647bbbbbb7bbbbbb7b44477bbbb77744f44e7bb7bbbbbb77444444b444464f44ffbbbbbb666666666ffff666666f66f6666b666666666666bbff646fffffffffffffffffffffff
+    4444446444444444446b77bccbb77bbb7774ff477bccb77444ff4477b7bbbbbb774444444444446f44ff46bbbb66666666bfbbfff6666f6f6666666666666666b664ff44ffffffffffffffffffffffff
+    4444b66b444444666464477bbbbbbbb7774ff4677bbbb77444444bdbb77bbcbb77ff44464444444f44f44466bb4b66b66b6fb4bff6bbbff66666666666666666b444ff4fffffffffffffffffffffffff
+    4444466b4444446664444477777777777ddddbb77bbbb7744444dfdbb77bbcbb77ffff464464644f44f4b4bbbbbbb666b4ff444fff44ff66bb6666666ff66b6bb4bfffffffffffffffffffffffffffff
+    444444664444444446446477777777777ddbbbb77bbbb7744bb4dfdbb77bbbbb7744f4664444644fff4444b4b6666666bff646b4ff4ff6b44bb666666f666b44b64fffffffffffffffffffffffffffff
+    4444444444444f44444466ddbbbbbbbb7bb777777bbbbb7d44ddffdbb77bbbbb7744444dd44db44fff444444bb6b66664ff44444fffffddbbb444b6b6fb6bbdbdb3ffffffffffffffffffffffffffff7
+    4444464444444f444d4444dbbbccbbbb7b777777777bb77d3ddd4ffbb777777b77ddddd4dd3443fff34444bb6bd4d966444444ddffff463d4bd4dd6dff6666dfb4ffffffffffffffffffffffffffff77
+    4444464444444ff44ff4b4dccbccbb777b774477bbbbbb77d7777777777b7bbb77ddddd4ddd4ddfffbdddd4dd3ddbddddbd446ddffff444d44bdddddff4669dfddffffffffffffffffffffffffffff77
+    4444446444444ffddfd344dbcbbbbb7bbb774777bb77bb7bb777777777bbb7b777dd434ddddffdffdddddfddddd3dddddbddddddffff46d444d4ddddffd9dddfdfffffffffffffffffffffffffffff77
+    44444444444444f3bf44ffdbbbbbcbbbbbb77bbbcb77bb7bbbb7bbb7bb77777777dddddddddfffffdddddffdddddddddddd444ddffffddddb4ddddddffd66ddfdffffffffffffffffffffffffffff777
+    44444444ddd444ff4f33ffcbbbbbccbbccb77bbbcbbbbb7bb777b7777b77bbbb77dddd44ddd4fffdd4dddffd4dddddddddddddddffffddd44b4dddddffdddddffffffffffffffffffffffffffffff777
+    44444444dddddddfdf44f4bbccbbbbbbccbbbbbbbbbbbbbbbb77bbb7bbbbbbcb77d4ddddddddfffd4dddddffddddddddddddd6bdfffffdd44444dd4ddfdddddffffffffffffffffffffffffffffff777
+    44444444ddddddd4ff4ff4bbbbbbb777bbbbbbbbccbb777bbbbbbbbb777bbccb77dd4dddddddfffddddddddfddd4ddddddddddddfffffdd44b4ddddddffdddffffffffffffffffffffffffffffff7777
+    6444444ddd3dd44dff6ff4bbbcbb77777bbcccbbccbb77bbb777bbb77777bccb77ddfdddddddfffdddd4dddffdffddddddddddddfffffddddddddddddffddfffffffffffffffffffffffffffffff7777
+    4344ddddddddd4ddff4fdd7bbcbb77b77bbbcbbbbbbbbbbbb777b7777b77bbbb77dfffddddddfffddddddddffdfdddddddffddddfffffdddddddddddffffffffffffffffffffffffffffffffffff7777
+    4444ddddb4ddddddfddfd477bcbb77777bbbbbbbbbbb777bbbbbb7777777bccb77dffdddddddffffddddddddfffddddd4dffddddfffffddddddddfdfffffffffffffffffffffffffffffffffffff7777
+    4444deedebd4434efffdd477bbbb77777bbbcccccb777777bbbbbbb77777bbb777dffdddddddffffddddddddfffdddddddfdddddfffffddddfdddfdffffffffffffffffffffffffffffffffffff77777
+    4444befeebe4d4beff444477b7bb77777bbccbbbb777b7b77bbbbbb77777bb7777ddfffdddddffffdddddddddffddddddffdddddfffffdddffdddffffffffffffffffffffffffffffffffffffff77777
+    444eeeefeeeed4e4ff44447777bb77777bbbbbbb77b7b7b777b77bb77777bcbb7744dffdddddffffdddd44dddffddddddffdddddfffffdddffdddfffffffffffffffffffffffffffffffffffffd77777
+    fffeeffffeeeeeffffeffe77bbbb77777bbbccb777b7b7b777777bb77777bccb77dddffddddfffffddddd4dddfffdddddffdddddfffffdddffdfffffffffffffffffffffffffffffffffffffffd7777f
+    effeffedeeffffffffffff77bccb77777bbbbbb777b7b7b7b77b7bbb7777bccb77dddffddd4fffffdddddddddfffdddbdffd4dddffffffddffffffffffffffffffffffffffffffffffffffffffd77777
+    beffffedffffffffffffff77bccbbbbbb777bb77b7b7b7b7b77bbbcbbbbbbbbbb7dddfdddddffffffdddddddbfffdddbcffddddfffffffdfffffffffffffffffffffffffffffffffffffffffff777777
+    dfffffffffffffffffffff77bbbbbbbbb77bbb77b7b7b7b7b77bbbccccbbbbbb77dddffdddffffffffdddd4dbffffddddffdddffffffffffffffffffffffffffffffffffffffffffffffffffff777777
+    ffffffffffffffffffffff77bbbbb77bbbbbbb77b7b7b7b7b77bbbbbccbbcbb777ffdffdffffffffffffddccdffffdbddffd4fffffffffffffffffffffffffffffffffffffffffffffffffffffbbf777
+    efffffffffffffffffffff77b7bb777bbbbbb777b7b7b7b7b777bbbbbbbbccb777fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffccdbbbbbbb7
+    ffffffffffffffffffffff77b77b77bbbbb7b777b7b7b7b7b777bbbbbcccbccbb77fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffcfcb7bbbbbbb
+    ffffffffffffffffffffff7777bbbbbbbb777777b7b7b7b7b777bccbbbccbbcbb777ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7ddbb777bbb777
+    ffffffffffffffffffffff7777bbbbb7bb7bb777b7b7b7b7b777bbbbbbbbbbbbb777fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff77b7bbbb7777bb777
+    fffffffffffffffffffff77777bbbbb777bbb777b7b7b7b7b777bbbbcccbbbb777777ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdb7777bbbb7777b7777
+    ffffffffffffffffffffff7777bbccbb77bbb777b7b7b7b7b777b77bcccbb777b7777777fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff777bb777bbbbb777bb777
+    fffffffffffffffffffffb77bbccbbbbbbbbb777b7b7b7b7b777777bbbbbbbbbb777b77777fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff77f77bbbbb7777bb77bbb77
+    fffffffffffffffffffffb7bbbcbbbbbbbbbb777b7b7b7b7b777b7bbbbbbbbbbb777777b77ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffccbb77777bbbbbb77bb77bb777
+    ffffffffffffffffffff77bbbbbccbcbbbccb777b7b7b7b7b777777bbbcccbbbb77777bbb7f7b777ffffffffffffffffffffffffffffffffffffffffffffffffffffffcdbb77777bbbbbb77777bbb777
+    fffffffffcfffffffff777777bbccbccbcccb777b7b7b7b7b777b7bbbcccbbbbb7777777bb77777b7fff777ffffffffffffffffffffffffffffffffffffffffffffffcdcbbb777bbbbbbbb777bbbbb77
+    ddcccffffffffffff77777b777bbcbbbbbbbb777b7b7b7b7b777bbbbbbbbbbbbb7777777bb77777777777bbcfcffffffffffffffffffffffffffffffffffffffffffcdbbbbb777bbbbbbccb7777bbbb7
+    bdddfcbffffffff7777777bbb777bbbbbb77b777b7b7b7b7b777bbbbbbbbbbb7777777777b7bb7777777bbbf7bfcffffffffffffffffffffffffffffffffffffffffcdbbb77777bbbbbbcb77777bbbb7
+    bbbddbbcffff7777777777bb7bb777bbb77bb777b7b7b7b7b777bbcbbbbbbbb77777777777777777777777777bbbb7ffffffffffffffffffffffffffffffffffffffcbbbcb7777bbbbbccb777777bbb7
+    bbbbdbbbb7777777b77b77777bbbbbbbb7b77777b7b7b7b7b777bbcbbbbbb7777777777777777777777777777777777ffffffffffffffffffffffffffffffffffffffcbccb7777bbbbccbb777bb77777
+    bbbb7777777777bbb77777777777777777777bbbbbbbbbbbb777bbcbbb777777777b77777777777777777777777bb7b77b7777fffffffffffffffffffffffffff77ffbbcbb77777bbbccb7777bbb77b7
+    bbbbbbbb777777bb77777b7777777777777bb77777777777b7777bb7bb77777777777777b7b7777777777777bbbbbbb7777bbbbbfccccccffffffffffffffffcf7777bbbbbbb777bbccbb77bbbbbb777
+    bbb777777b777777777bbbbb77777777777bb777777777777777777777777777777777777b7777777777777b77bbbbbbb7777b7bbbbbbbcccccffffffffcfcccf777777b7777777bccbbbb7bbbbb777b
+    bb777777bbbbb77777bb77bbb7777777bbbbbbbbbbbbbbbbb777777777777777777777777777777777777777777777bb77777b77bbbbbbbdbbb7f777ffcbbbbbb777777bb77777bbbbbbb77bbbb777bb
+    ccbddddbbbbbbb77777b7777777b77b7b777777777777777b777777777bb777777777b77777777777777777777bbb777777bbb7777777bdbbbb7777777bbbbbbbbb777bbbbbbbbbbbbbb77bbbbbbbbbb
+    ddbbbbccbbbbbbbbbb777bb777777777b777777777777777b777777777b77777777777777777777777777777777777777bbbbbbb77777bbb7777777b7777bbbbbb77777bbbbbbbbbbbbbb777bbbbbbbb
+    cbbbbbbbbbbbbbbbbbb777bbbb777777777777777777777777777777777777777777777777777777b777b77777777777777bbbbbb777777777bbbbbbbb77bbbbbb7777777777bbbbbbbbbb77777bbbbb
+    cbbb777777777777bbbbb7b77777bb777777777777bbbbb777777777777777777777777777777bb777b7777777777777777bbbbb77777bbbbbbbbbbbbbbb7777bbb77777777777bbbbbbb7777777bbbb
+    bbbb77777777bbbbbbbbbbb77bbbbbbbb77777777bbb77777b7777777777777bb77777777777777777777777777b7777777bbbbbbbbbbbbbbbbbbbbbbb7777777bbbbbbbbb77777bbbbb77777777bbcc
+    bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb77777777777777777777777777bbbbbbb777777777777bb7777777777777777777777bbbbbbbbb7777bbb77bbbbbbbbb777777bbbbbbbbbbbbbbbb7bbbbb777bcc
+    bbbbbb7777777bbbbbbbbbbb77777777777777777777777777777777777777777777777b777777777bb777b77777777777b777777b77777777777bbbbbbbbbb77777777bbbbbbbbbbbb777bb777777bc
+    bbbccbbb7777777777bbbbbbb77777777777777777777777777777777777777777777777777777777bbb77777b7777bbbbb7777777bb777777bbbbbbbb77777777b777777bbbbbbbbbbb77bb777bbbbc
+    bbbcdddddbbbb7777777777777bbbbb7777bb7b777777777777b777777777777777777777b7bbbbbbb77777777777777777bbbbbb77777bbbbbbbbbb7777777777777777777bbbbbbbbbbbbbbbbbbbbb
+    bbbdcbbbbbbbbbbbbbbbb7777bb777777777777777777777777777777bbbbbb777b7777777777777b77777777777777777bbbbbbbb7bbbbbbbb7777777b777777777bb77777777bbbbbbbbbbbbbbbbbb
+    bdbbbbbbbbbbbbbbbbbbbbb777777777777777777777777777777777777777777777777777777777777777777777777777bbbbbbbbbbbbbb77777777bbbbbb777777bbbbbbb7777bbbbbbbbbbbbbbbbb
+    cddbccccbbbbbbbbbbbbbb7777777777777bbbbb7777777777b777777777777777777777777777777777777777777777777777bbbbbbbb777777bb77777bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+    cdcccbcccbbbbbbbbbbbbbb7777777bbbbbb777777777777777bbbbbbbbb777777777777777777777777777777bbbbbb777777777777777777777777777bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+    dcbbbbbbbbbbbbbbbbbb777777bbbbb7777777777777777777777777777777777777bb7777777777777777777777777777777777777777777777777777bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+    dbbbbbbbbbbb77777777777777bbbb7777777bb7777777777b7777777777777777777777777777777777777777777777bbbbbbbbbbbbbbbbbbbbbbb777777bbbbbbb777777bbbbbbbbbbbbbbbbbbbbbb
+    bbbbbbbcccbb7bbbbbbbb777777bb7777bb7777777777777777777777777777777777bb77777b7777777bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb777777777b7777777777777777777777777777
+    bbbbbbbccbbbbbbbbbbbbbbbbbbbb777bbb7777bbbbbbb777777777777bbbbbbbbbbbbb7777bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb777b7777777777bbb777777777777777
+    bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb777777777777777777777777bbb777777bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb777bbbb77bbbbbbbbbbbbb
+    bbbbbbbbcbbbbbbbbbbbbbbbbbbbbbbbbbb777777777777777777777777777777777777bbbbb7777bbbbbbbbbbbbbbbbbb77777777777777bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+    bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb7bbbbbbbb777777bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb777777777777777777777777777777777777777bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+    bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb777777777777bbbbbbbbbbbbbbb777777777777777bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+    bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb77777777bbbbbbbbbbbbbbbbbbbbb7777777bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+    bbb77777bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb77bbbbbbbbbbbb777777777777bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb777
+    777777777777bbbbbbbbbbbbbbbbdddbbbbbbbbbbbbbbbbbbb77777777bbbbbbb7bbbbbbbbb777bbbbbbbb7bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb777777
+    777777777777777777777bddddd7777777777bbbbbbbbb77777777bbb777777777bbbbbbbbbb777777777777bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb7777b777
+    777777777bbbbb777777777777777777777bbbbbbb7777777bb77777777777bbbbbb777777777777777bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb77777bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb77b77777
+    777777777777bb777777777777bbbbbbbbbbbbb777777bbbbb777777bbbbbbbbb7b777777bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb7777777777777bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb77777
+    b77777777777777777777777bbbbbbbbbbb777777bbbbbbbbbbbbbbbbbbbbbbbb77777bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb7777777bbb7777777bbbbb777bbbbbbbbbbbbbbbbbbbbbbb7777777777
+    b7777777777777777bbbbbbbbbbbbbbbbe7777bbdbbbbbbbbbbbbbbbbbbbbbbbbbb777777bbbbbbbbbbbbbbbbbbbbbbbbbbb777777777777777777777777777bbbbbb7777777bb7777777777777bbbbb
+    77777777777bbbbbbbbbbbbbbbbbbbbbbee77bbd4bddbbdbbb3b444ddd444bbb344bbddbbcb44bbb44bb3444b444444b4be44e777777777777777777777777777777777777777777777bbbbbbbbbbbbb
+    bdddd7bbbbbbbb444b4bbb44bb4b4bb4444dd44d44ddb4d3bddddddddd444ddddd44ddddddb33dd4444ddd44344444444e4e44e7b7eee7777b777777777777777777777bb7777777777777777bbbbbbb
+    ddbbdd44b44b444444b444b444443444dddddddd4ddddddddddddddd4dddddddbdddddddddddddd44d44dddddd44dddddbd4dd3dd34b3bbddd777777bb777777777777bbbbbbbbbbbbbb77777bbbbbbb
+    bbeee4b44444444dd4d33ddddddddde4dddddddddddddddddddddddddddddddd4d4ddd4dddddddddddd44ddddddddddddddddddddddd3dddbbbdbbdddbbbbbb7b777bbbbbbbbbbbbbbbbbbbbbbbbbbbb
+    b4b43dd44db4ddddd4d44dddddddddbd4ddddddddddddddddddddddddd4ddddddd4dddddddddddddddd44ddddddddddddddddddddd4ddddd44dddddddddbdbddddbdbbddddbbbbbbbbbbbbbbbbbccbbb
+    dddd3ddddd4ddddd44dddd4dddddddddddddddddddddddddddddddddddd3dddddd4ddddddddddddddddddddddddddddddddddddddddddddddd4dddddddddddddddddd334db4d3dd4bbd44b3ddbbcbbbb
+    d4dddbddddddddddd4dddd4ddddddddddddddd3dddddddddd444ddddddd4dddddddddddddddddddddddddddddddd4ddddddddddddddddddddd4ddddddddddddddddddddd3bd4ddd4dddd4444444ddddd
+    ddddddddddddddddd4ddddddddddddddddddd4ddddddddddddd4ddddddddddddddddddddddddddddddddddddd4dddddddddddddddddd4ddddddddddd4ddddddddddddddddddd4d44ddddd4dd44dddddd
+    4ddddddd4d444dd4dd4ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd4ddddddddddddddddddddddddddddddd4ddddddddddddddddddddddddddddd4ddddddddd
+    dddddddddd444ddddd3ddddddddddddd4ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd44dddddddddddddddddddddddddddddddddd4ddddddddd
+    `)
+let calabaci = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . 7 7 . . . . . . . 
+    . . . . . . . 7 . . . . . . . . 
+    . . . . 4 4 4 4 4 4 4 . . . . . 
+    . . . 4 4 4 4 4 4 4 4 4 . . . . 
+    . . 4 4 4 4 4 4 4 4 4 4 4 . . . 
+    . . 4 4 4 f 4 4 4 f 4 4 4 . . . 
+    . . 4 4 4 4 4 4 4 4 4 4 4 . . . 
+    . . 4 4 4 4 4 4 4 4 4 4 4 . . . 
+    . . 4 4 4 f f f f f 4 4 4 . . . 
+    . . 4 4 4 f 5 5 5 f 4 4 4 . . . 
+    . . 4 4 4 f 5 5 5 f 4 4 4 . . . 
+    . . . 4 4 f f f f f 4 4 . . . . 
+    . . . . 4 4 4 4 4 4 4 . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.Player)
+controller.moveSprite(calabaci)
+calabaci.setStayInScreen(true)
+murcielagi = sprites.create(img`
+    . . f f f . . . . . . . . f f f 
+    . f f c c . . . . . . f c b b c 
+    f f c c . . . . . . f c b b c . 
+    f c f c . . . . . . f b c c c . 
+    f f f c c . c c . f c b b c c . 
+    f f c 3 c c 3 c c f b c b b c . 
+    f f b 3 b c 3 b c f b c c b c . 
+    . c b b b b b b c b b c c c . . 
+    . c 1 b b b 1 b b c c c c . . . 
+    c b b b b b b b b b c c . . . . 
+    c b c b b b c b b b b f . . . . 
+    f b 1 f f f 1 b b b b f c . . . 
+    f b b b b b b b b b b f c c . . 
+    . f b b b b b b b b c f . . . . 
+    . . f b b b b b b c f . . . . . 
+    . . . f f f f f f f . . . . . . 
+    `, SpriteKind.Enemy)
+murcielagi.setPosition(randint(10, 150), randint(10, 110))
